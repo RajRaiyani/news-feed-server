@@ -1,0 +1,23 @@
+{
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-plusplus": "off",
+    "newline-per-chained-call": "off",
+    "no-console": 0,
+    "no-underscore-dangle": 0,
+    "object-curly-newline": 0,
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
+    "no-use-before-define": ["error", { "variables": false }],
+    "no-multi-str": 0,
+    "max-len": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
+  "extends": [
+    "airbnb-base"
+  ]
+}
