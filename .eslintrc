@@ -5,6 +5,7 @@
   },
   "rules": {
     "no-plusplus": "off",
+    "newline-per-chained-call": "off",
     "no-console": 0,
     "no-underscore-dangle": 0,
     "object-curly-newline": 0,

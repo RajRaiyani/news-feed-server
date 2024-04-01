@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const Logger = require('./lib/logger');
+const appRoute = require('./components/routes');
 
 const app = express();
 
@@ -19,5 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/health', (req, res) => {
   res.send('ok');
 });
+
+app.use('/api/v1', appRoute);
 
 module.exports = app;

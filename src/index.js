@@ -7,11 +7,11 @@ const vars = require('./config/var');
 const app = require('./app');
 const Logger = require('./lib/logger');
 
-const testScript = require('./script/fetchFeeds');
-
-testScript();
-
 const server = http.createServer(app);
+
+// const fetchFeeds = require('./script/fetchFeeds');
+
+// fetchFeeds();
 
 const { port, env } = vars;
 

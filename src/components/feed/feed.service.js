@@ -9,3 +9,12 @@ exports.upsert = async (feed) => {
     dbClient.release();
   }
 };
+
+exports.list = async (limit, offset, tokens) => {
+  const dbClient = await DB.pool.connect();
+  try {
+    return await dal.list(dbClient, limit, offset, tokens);
+  } finally {
+    dbClient.release();
+  }
+};
