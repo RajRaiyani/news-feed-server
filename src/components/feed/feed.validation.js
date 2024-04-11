@@ -8,6 +8,7 @@ module.exports = {
       tokens: Joi.array().items(
         Joi.string().lowercase().trim().min(1).max(50),
       ).default([]),
+      resultCount: Joi.boolean().default(false),
     }),
   },
 };
