@@ -10,10 +10,14 @@ exports.upsert = async (feed) => {
   }
 };
 
-exports.list = async (limit, offset, tokens) => {
+exports.list = async (limit, offset, tokens, resultCount = false) => {
   const dbClient = await DB.pool.connect();
+  const promiseArray = [];
   try {
-    return await dal.list(dbClient, limit, offset, tokens);
+    promiseArray.push(dal.list(dbClient, limit, offset, tokens));
+    if (resultCount) promiseArray.push(dal.getResultCount(dbClient, tokens));
+    const [list, count] = await Promise.all(promiseArray);
+    return { list, count: count ?? undefined };
   } finally {
     dbClient.release();
   }

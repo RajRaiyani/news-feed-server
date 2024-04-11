@@ -29,3 +29,19 @@ exports.list = async (dbClient, limit = 10, offset = 0, tokens = []) => {
 
   return res.rows;
 };
+
+exports.getResultCount = async (dbClient, tokens = []) => {
+  const params = [];
+  const sqlStmt = `
+        SELECT 
+          count(*) as "count" 
+        FROM "feed" 
+        ${tokens.length ? 'where match_score("document",$1) > 0' : ''};
+      `;
+
+  if (tokens.length) params.push(tokens);
+
+  const res = await dbClient.query(sqlStmt, params);
+
+  return res.rows[0].count;
+};
