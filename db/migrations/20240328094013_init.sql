@@ -16,8 +16,8 @@ begin
 end;
 $$
 language plpgsql;
- 
- 
+
+
 create table if not exists "feed"(
 	"id" UUID DEFAULT GEN_RANDOM_UUID(),
 	"title" varchar(500) not null,
@@ -26,8 +26,8 @@ create table if not exists "feed"(
 	"content" varchar(10000) not null,
 	constraint "pk_feed" primary key ("id")
 );
- 
- 
+
+
 create unique index if not exists "uc_feed_title_publishedAt" on "feed" ("title","publishedAt");
 
 -- migrate:down
